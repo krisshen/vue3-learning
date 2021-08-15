@@ -35,10 +35,10 @@
 
 #### Interpolation and Data Binding
 
-data property from js will be matched and rendered in html `{{ }}` tags
+`data()` property from js will be matched and rendered in html `{{ }}` tags
 
 <details>
-  <summary>html</summary>
+  <summary>html sample</summary>
 
   ```
     <h2>{{ dataPropertyName }}</h2>
@@ -46,12 +46,64 @@ data property from js will be matched and rendered in html `{{ }}` tags
 </details>
 
 <details>
-  <summary>js</summary>
+  <summary>js sample</summary>
 
   ```
     data() {
         return {
             dataPropertyName: "bla"
+        }
+    }
+  ```
+</details>
+
+#### Directive - v-bind
+
+`data()` property from js will be matched and redered in html element attribute
+
+<details>
+  <summary>html sample</summary>
+
+  ```
+    <img v-bind:src="imgUrl" />
+  ```
+</details>
+
+<details>
+  <summary>js sample</summary>
+
+  ```
+    data() {
+        return {
+            imgUrl: 'https://some-url'
+        }
+    }
+  ```
+</details>
+
+#### methods
+
+`methods` property from js can be invoked in html
+
+<details>
+  <summary>html sample</summary>
+
+  ```
+    <p>Favorite Number: {{favNum()}}</p>
+  ```
+  or
+  ```
+    <p v-html="favNum()">Favorite Number: RANDOM NUMBER BETWEEN 0 AND 1</p>
+  ```
+</details>
+
+<details>
+  <summary>js sample</summary>
+
+  ```
+    methods: {
+        favNum () {
+            return Math.random();
         }
     }
   ```

@@ -59,7 +59,7 @@
 
 #### Directive - v-bind
 
-`data()` property from js will be matched and redered in html element attribute
+use `v-bind` to reder `data()` property to html element attribute
 
 <details>
   <summary>html sample</summary>
@@ -76,6 +76,36 @@
     data() {
         return {
             imgUrl: 'https://some-url'
+        }
+    }
+  ```
+</details>
+
+#### Directive - v-html
+
+use `v-html` to render raw html
+
+<details>
+  <summary>html sample</summary>
+
+  ```
+    <p v-html="rawHtml"></p>
+    <p v-html="rawHtmlmMethod()"></p>
+  ```
+</details>
+
+<details>
+  <summary>js sample</summary>
+
+  ```
+    data() {
+        return {
+            rawHtml: "<h2>I am raw HTML content</h2>"
+        }
+    },
+    methods: {
+        rawHtmlmMethod () {
+            return this.rawHtml;
         }
     }
   ```
@@ -106,6 +136,28 @@
             return Math.random();
         }
     }
+  ```
+</details>
+
+#### Communication between `data()` and `methods`
+
+`methods` uses `this` keyword to access `data()` properties
+
+<details>
+  <summary>js sample</summary>
+
+  ```
+    data() {
+        return {
+            year: "2021",
+            month: "12"
+        };
+    },
+    methods: {
+        getYearMonth () {
+            return this.year + ' ' + this.month;
+        }
+    },
   ```
 </details>
 

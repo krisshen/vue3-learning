@@ -33,131 +33,136 @@
 
 ### Syntax
 
-#### Interpolation and Data Binding
+- Interpolation and Data Binding
 
-`data()` property from js will be matched and rendered in html `{{ }}` tags
+  `data()` property from js will be matched and rendered in html `{{ }}` tags, it consists of object which holds data for html
 
-<details>
-  <summary>html sample</summary>
+  <details>
+    <summary>html sample</summary>
 
-  ```
-    <h2>{{ dataPropertyName }}</h2>
-  ```
-</details>
+    ```
+      <h2>{{ dataPropertyName }}</h2>
+    ```
+  </details>
 
-<details>
-  <summary>js sample</summary>
+  <details>
+    <summary>js sample</summary>
 
-  ```
-    data() {
-        return {
-            dataPropertyName: "bla"
-        }
-    }
-  ```
-</details>
+    ```
+      data() {
+          return {
+              dataPropertyName: "bla",
+              anotherProperty: "xxx"
+          }
+      }
+    ```
+  </details>
 
-#### Directive - v-bind
+- methods
 
-use `v-bind` to reder `data()` property to html element attribute
+  `methods` property from js can be invoked in html, it consists of js functions
 
-<details>
-  <summary>html sample</summary>
+  <details>
+    <summary>html sample</summary>
 
-  ```
-    <img v-bind:src="imgUrl" />
-  ```
-</details>
+    ```
+      <p>Favorite Number: {{favNum()}}</p>
+    ```
+    or
+    ```
+      <p v-html="favNum()">Favorite Number: RANDOM NUMBER BETWEEN 0 AND 1</p>
+    ```
+  </details>
 
-<details>
-  <summary>js sample</summary>
+  <details>
+    <summary>js sample</summary>
 
-  ```
-    data() {
-        return {
-            imgUrl: 'https://some-url'
-        }
-    }
-  ```
-</details>
+    ```
+      methods: {
+          favNum () {
+              return Math.random();
+          }
+      }
+    ```
+  </details>
 
-#### Directive - v-html
+- Communication between `data()` and `methods`
 
-use `v-html` to render raw html
+  `methods` uses `this` keyword to access `data()` properties
 
-<details>
-  <summary>html sample</summary>
+  <details>
+    <summary>js sample</summary>
 
-  ```
-    <p v-html="rawHtml"></p>
-    <p v-html="rawHtmlmMethod()"></p>
-  ```
-</details>
+    ```
+      data() {
+          return {
+              year: "2021",
+              month: "12"
+          };
+      },
+      methods: {
+          getYearMonth () {
+              return this.year + ' ' + this.month;
+          }
+      },
+    ```
+  </details>
 
-<details>
-  <summary>js sample</summary>
+- Directive - `v-bind` - bind data to HTML attribute
 
-  ```
-    data() {
-        return {
-            rawHtml: "<h2>I am raw HTML content</h2>"
-        }
-    },
-    methods: {
-        rawHtmlmMethod () {
-            return this.rawHtml;
-        }
-    }
-  ```
-</details>
+  use `v-bind` to reder `data()` property to html element attribute
 
-#### methods
+  <details>
+    <summary>html sample</summary>
 
-`methods` property from js can be invoked in html
+    ```
+      <img v-bind:src="imgUrl" />
+    ```
+  </details>
 
-<details>
-  <summary>html sample</summary>
+  <details>
+    <summary>js sample</summary>
 
-  ```
-    <p>Favorite Number: {{favNum()}}</p>
-  ```
-  or
-  ```
-    <p v-html="favNum()">Favorite Number: RANDOM NUMBER BETWEEN 0 AND 1</p>
-  ```
-</details>
+    ```
+      data() {
+          return {
+              imgUrl: 'https://some-url'
+          }
+      }
+    ```
+  </details>
 
-<details>
-  <summary>js sample</summary>
+- Directive - `v-html` - output raw HTML
 
-  ```
-    methods: {
-        favNum () {
-            return Math.random();
-        }
-    }
-  ```
-</details>
+  use `v-html` to render raw html
 
-#### Communication between `data()` and `methods`
+  <details>
+    <summary>html sample</summary>
 
-`methods` uses `this` keyword to access `data()` properties
+    ```
+      <p v-html="rawHtml"></p>
+      <p v-html="rawHtmlmMethod()"></p>
+    ```
+  </details>
 
-<details>
-  <summary>js sample</summary>
+  <details>
+    <summary>js sample</summary>
 
-  ```
-    data() {
-        return {
-            year: "2021",
-            month: "12"
-        };
-    },
-    methods: {
-        getYearMonth () {
-            return this.year + ' ' + this.month;
-        }
-    },
-  ```
-</details>
+    ```
+      data() {
+          return {
+              rawHtml: "<h2>I am raw HTML content</h2>"
+          }
+      },
+      methods: {
+          rawHtmlmMethod () {
+              return this.rawHtml;
+          }
+      }
+    ```
+  </details>
+
+
+
+
 

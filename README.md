@@ -162,7 +162,32 @@
     ```
   </details>
 
+- Directive - `v-on` - event binding
 
+  use `v-on:{EventName}` to listen to a HTML event
 
+  <details>
+    <summary>html sample</summary>
 
+    ```
+      <button v-on:click="add()">Add</button>
+      <p>Result: {{ counter }}</p>
+    ```
+  </details>
 
+  <details>
+    <summary>js sample</summary>
+
+    ```
+      data() {
+          return {
+              counter: 0
+          }
+      },
+      methods: {
+          add () {
+              return this.counter+=1;
+          }
+      }
+    ```
+  </details>

@@ -167,7 +167,7 @@
   use `v-on:{EventName}` to listen to a HTML event
 
   <details>
-    <summary>html sample</summary>
+    <summary>html sample 1</summary>
 
     ```
       <button v-on:click="add()">Add</button>
@@ -176,7 +176,7 @@
   </details>
 
   <details>
-    <summary>js sample</summary>
+    <summary>js sample 1</summary>
 
     ```
       data() {
@@ -187,6 +187,33 @@
       methods: {
           add () {
               return this.counter+=1;
+          }
+      }
+    ```
+  </details>
+
+  <details>
+    <summary>html sample 2</summary>
+
+    ```
+      <input type="text" v-on:input="setName">
+      <!-- <input type="text" v-on:input="setName($event, '2nd Param')"> -->
+      <p>Name: {{ name }}</p>
+    ```
+  </details>
+
+  <details>
+    <summary>js sample 2</summary>
+
+    ```
+      data() {
+          return {
+              name: ''
+          }
+      },
+      methods: {
+          setName (event) {
+              this.name = event.target.value;
           }
       }
     ```

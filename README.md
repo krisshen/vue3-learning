@@ -218,3 +218,30 @@
       }
     ```
   </details>
+
+  `v-on` also supports Modifiers
+  
+  <details>
+    <summary>html sample - only enable mouse right click</summary>
+
+    ```
+      <button v-on:click.right="add()">Add</button>
+      <p>Result: {{ counter }}</p>
+    ```
+  </details>
+
+  <details>
+    <summary>html sample - prevent page refresh when submit form</summary>
+
+    ```
+      <form v-on:submit.prevent="aMethod">
+    ```
+  </details>
+
+  <details>
+    <summary>html sample - "onEnter" method will be triggered when hit keyboard Enter</summary>
+
+    ```
+      <input @keyup.enter="onEnter" />
+    ```
+  </details>

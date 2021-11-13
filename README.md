@@ -60,7 +60,7 @@
 
 - methods
 
-  `methods` property from js can be invoked in html, it consists of js functions
+  `methods` property from js can be invoked in html, it consists of js functions, better to use `methods` in events binding.
 
   <details>
     <summary>html sample</summary>
@@ -112,6 +112,8 @@
   
   A computed property will only re-evaluate when some of its reactive dependencies have changed. In comparison, a method invocation will always run the function whenever a re-render happens.
 
+  Use `computed` in data binding when data depends on other data.
+
   <details>
     <summary>html sample</summary>
 
@@ -141,6 +143,8 @@
 - watch
   
   Watcher properties will be triggered only when its property is changed. It's useful for timers, counters, asynchronous or expensive operations in response to change data.
+
+  Not used directly in template. Use for any non-data update.
 
   example - https://v3.vuejs.org/guide/computed.html#watchers
 

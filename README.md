@@ -245,3 +245,15 @@
       <input @keyup.enter="onEnter" />
     ```
   </details>
+
+- Directive - `v-model` - two-way binding on a form input element or a component.
+  
+  `v-on` is a shortcut of `v-bind:value` and `v-on:input`
+
+  <details>
+    <summary>html sample</summary>
+
+    ```
+      <input type="text" v-model="name">
+    ```
+  </details>

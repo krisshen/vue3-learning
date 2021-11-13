@@ -108,6 +108,42 @@
     ```
   </details>
 
+- computed
+  
+  A computed property will only re-evaluate when some of its reactive dependencies have changed. In comparison, a method invocation will always run the function whenever a re-render happens.
+
+  <details>
+    <summary>html sample</summary>
+
+    ```
+      <input type="text" v-model="name">
+      <p>Your Name: {{ fullname }}</p>
+    ```
+  </details>
+
+  <details>
+    <summary>js sample</summary>
+
+    ```
+      data() {
+        return {
+          name: ''
+        }
+      },
+      computed: {
+          fullname () {
+              return this.name + ' ' + 'Bla';
+          }
+      }
+    ```
+  </details>
+
+- watch
+  
+  Watcher properties will be triggered only when its property is changed. It's useful for timers, counters, asynchronous or expensive operations in response to change data.
+
+  example - https://v3.vuejs.org/guide/computed.html#watchers
+
 - Directive - `v-bind` - bind data to HTML attribute
 
   use `v-bind` to reder `data()` property to html element attribute

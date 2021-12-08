@@ -297,3 +297,8 @@
       <input type="text" v-model="name">
     ```
   </details>
+
+- Shorthands
+  - `@EventName` for `v-on:EventName`
+  - `:AttrName` for `v-bind:AttrName`
+  

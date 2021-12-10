@@ -301,4 +301,53 @@
 - Shorthands
   - `@EventName` for `v-on:EventName`
   - `:AttrName` for `v-bind:AttrName`
+
+- Dynamic Styling
+
+  use `:class` to dynamically assign a class based on a boolean veriable
+  <details>
+    <summary>html sample 1</summary>
+
+    ```
+      <div 
+        class="classA"
+        :class="{classB: boolVar}"
+      ></div>
+    ```
+  </details>
+
+  with computed properties:
+  <details>
+    <summary>html sample 2</summary>
+
+    ```
+      <div 
+        class="classA"
+        :class="classVar"
+      ></div>
+    ```
+  </details>
   
+  <details>
+    <summary>js sample 2</summary>
+
+    ```
+      computed: {
+          classVar () {
+              ... // more logic
+              return { classB: this.bla}
+          }
+      }
+    ```
+  </details>
+
+  dynamic classes in array:
+  <details>
+    <summary>html sample 3</summary>
+
+    ```
+      <div 
+        :class="['classA', {classB: boolVar}]"
+      ></div>
+    ```
+  </details>

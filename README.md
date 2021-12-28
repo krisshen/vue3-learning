@@ -352,7 +352,7 @@
     ```
   </details>
 
-- if, else conditions
+- Conditional Rendering - `v-if`, `v-else-if` and `v-else`
   
   <details>
     <summary>html sample</summary>
@@ -367,5 +367,18 @@
       <div v-else="xxx">
         ...
       </div>      
+    ```
+  </details>
+
+- Conditional Rendering - `v-show`
+  
+  `v-show` will always be rendered and remain in the DOM; v-show only toggles the display CSS property of the element.
+  `v-show` doesn't support the <template> element, nor does it work with `v-else`.
+  prefer `v-show` if you need to toggle something very often, and prefer `v-if` if the condition is unlikely to change at runtime.
+  <details>
+    <summary>html sample</summary>
+
+    ```
+      <h1 v-show="ok">Hello!</h1>   
     ```
   </details>

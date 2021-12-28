@@ -351,3 +351,21 @@
       ></div>
     ```
   </details>
+
+- if, else conditions
+  
+  <details>
+    <summary>html sample</summary>
+
+    ```
+      <div v-if="xxx">
+        ...
+      </div>
+      <div v-else-if="xxx">
+        ...
+      </div>
+      <div v-else="xxx">
+        ...
+      </div>      
+    ```
+  </details>

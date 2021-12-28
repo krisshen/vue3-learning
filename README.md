@@ -379,6 +379,56 @@
     <summary>html sample</summary>
 
     ```
-      <h1 v-show="ok">Hello!</h1>   
+      <h1 v-show="ok">Hello!</h1>
+    ```
+  </details>
+
+- List Rendering - `v-for`
+  
+  <details>
+    <summary>html sample 1 - loop an array</summary>
+
+    ```
+      <ul id="array-rendering">
+        <li v-for="item in items">
+          {{ item.message }}
+        </li>
+      </ul>
+    ```
+  </details>
+
+  <details>
+    <summary>html sample 2 - loop index of an array</summary>
+
+    ```
+      <ul id="array-rendering">
+        <li v-for="(item, index) in items">
+          {{ parentMessage }} - {{ index }} - {{ item.message }}
+        </li>
+      </ul>
+    ```
+  </details>
+
+  <details>
+    <summary>html sample 3 - loop an object, can loop value, name and index</summary>
+
+    ```
+      <ul>
+        <li v-for="(value, name, index) in myObject">
+          {{ index }}. {{ name }}: {{ value }}
+        </li>
+      </ul>
+    ```
+  </details>
+
+  <details>
+    <summary>html sample 4 - recommended to privde a `key` attribute with `v-for`</summary>
+
+    ```
+      <ul>
+        <div v-for="item in items" :key="item.id">
+          ...
+        </div>
+      </ul>
     ```
   </details>

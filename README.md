@@ -432,3 +432,29 @@
       </ul>
     ```
   </details>
+
+- Working with `Refs`
+
+  A `ref` object returns its HTML element object, the `ref` object has a single property `.value` that points to the inner value.
+
+  `$refs` is Vue internally used properties.
+
+  <details>
+    <summary>html sample</summary>
+
+    ```
+      <input type="text" ref="userText">
+    ```
+  </details>
+
+  <details>
+    <summary>js sample</summary>
+
+    ```
+      methods: {
+          setText () {
+              this.message = this.$refs.userText.value
+          }
+      }
+    ```
+  </details>  

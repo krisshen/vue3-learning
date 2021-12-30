@@ -617,6 +617,29 @@
     ```
   </details>
 
+- `Props` - Binding all props
+
+  <details>
+    <summary>App.vue (Parent)</summary>
+
+    ```
+      <template>
+        <user-data v-bind="person"></user-data>
+      </template>
+      <script>
+        export default {
+          data() {
+            return {
+              person: { firstname: 'Max', lastname: 'Schwarz' }
+            };
+          },
+          ...
+        }
+      </script>
+      ...
+    ```
+  </details>
+
 - `$emit` - emit own events with props data from Child to Parent component
 
   <details>

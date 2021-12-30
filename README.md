@@ -688,3 +688,57 @@
       ...
     ```
   </details>
+
+- `Provide / Inject` - This allows parent component to pass props or functions further down to a child component rather than passing them through in-between components.
+
+  <details>
+    <summary>Parent Component</summary>
+
+    ```
+      <template>
+        <button @click="doSomething">click me</button>
+      </template>
+      <script>
+        export default {
+          data() {
+            return {
+              varA: {
+                ...
+              }
+            }
+          },
+          methods: {
+            doSomething() {
+              ...
+            }
+          }
+          provide() {
+            return {
+              varA: this.varA,
+              doSomething: this.doSomething
+            }
+          },
+          ...
+        }
+      </script>
+      ...
+    ```
+  </details>
+
+  <details>
+    <summary>Child Component</summary>
+
+    ```
+      <template>
+        <button @click="doSomething">click me</button>
+        <p>{{ varA }}</p>
+      </template>
+      <script>
+        export default {
+          inject: ['varA', 'doSomething'],
+          ...
+        }
+      </script>
+      ...
+    ```
+  </details>

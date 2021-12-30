@@ -616,3 +616,52 @@
       ...
     ```
   </details>
+
+- `$emit` - emit own events with props data from Child to Parent component
+
+  <details>
+    <summary>SampleComponent.vue: (Child)</summary>
+    
+    ```
+      ...
+      <script>
+        export default {
+          props: ['id'],
+          emits: ['custom-event-bla'], // define emits events here
+          ...,
+          methods: {
+            someFunc() {
+              this.$emit('custom-event-bla', this.id) // first param is event name, then following with props (can be more than one)
+            }
+          }
+        }
+      </script>
+    ```
+  </details>
+
+  <details>
+    <summary>App.vue (Parent)</summary>
+
+    ```
+      <template>
+        <sample-component @custom-event-bla="handleThisEvent"></sample-component>
+      </template>
+      <script>
+        export default {
+          data() {
+            return {
+              varA: 'abc',
+              varB: 'def'
+            }
+          },
+          methods: {
+            handleThisEvent(childId) {
+              // childId here is this.id from child component's emit event 
+            }
+          }
+          ...
+        }
+      </script>
+      ...
+    ```
+  </details>

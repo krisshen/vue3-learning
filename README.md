@@ -373,7 +373,7 @@
 - Conditional Rendering - `v-show`
   
   `v-show` will always be rendered and remain in the DOM; v-show only toggles the display CSS property of the element.
-  `v-show` doesn't support the <template> element, nor does it work with `v-else`.
+  `v-show` doesn't support the `<template>` element, nor does it work with `v-else`.
   prefer `v-show` if you need to toggle something very often, and prefer `v-if` if the condition is unlikely to change at runtime.
   <details>
     <summary>html sample</summary>
@@ -457,4 +457,15 @@
           }
       }
     ```
-  </details>  
+  </details>
+
+- A standard Vue project folder structure
+  - public
+    - index.html
+  - src
+    - assets
+    - components
+    - App.vue
+    - main.js
+  - package.json
+  - ...

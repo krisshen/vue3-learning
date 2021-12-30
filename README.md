@@ -459,7 +459,7 @@
     ```
   </details>
 
-- A standard Vue project folder structure
+- A standard Vue project source code folder structure
   - public
     - index.html
   - src
@@ -469,3 +469,53 @@
     - main.js
   - package.json
   - ...
+
+- Adding a component
+  
+  <details>
+    <summary>sample Vue component - ./src/components/SampleComponent.vue</summary>
+    
+    ```
+      <template>
+        ...html
+      </template>
+      <script>
+        export default {
+          data() {
+            return {
+              ...
+            }
+          },
+          methods: {
+            ...
+          }
+        }
+      </script>
+      <style>
+        ...
+      </style>
+    ```
+  </details>
+
+  <details>
+    <summary>main.js</summary>
+
+    ```
+      ...
+      import SampleComponent from './components/SampleComponent.vue';
+      ...
+      app.component('sample-component', SampleComponent);
+      ...
+    ```
+  </details>
+
+  <details>
+    <summary>App.vue</summary>
+
+    ```
+      <template>
+        <sample-component></sample-component>
+      </template>
+      ...
+    ```
+  </details>

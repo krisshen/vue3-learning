@@ -519,3 +519,76 @@
       ...
     ```
   </details>
+
+- `Props` - Parent to Child component, [supported types](https://v3.vuejs.org/guide/component-props.html)
+
+  <details>
+    <summary>App.vue (Parent)</summary>
+
+    ```
+      <template>
+        <sample-component sample-prop-A="xxx" sample-prop-B="xxx"></sample-component>
+      </template>
+      ...
+    ```
+  </details>
+
+  SampleComponent.vue: (Child)
+
+  <details>
+    <summary>sample 1 - props as a list</summary>
+    
+    ```
+      ...
+      <script>
+        export default {
+          props: ["samplePropA", "samplePropB"],
+          ...
+        }
+      </script>
+    ```
+  </details>
+
+  <details>
+    <summary>sample 2 - props validation (with type)</summary>
+    
+    ```
+      ...
+      <script>
+        export default {
+          props: {
+            samplePropA: String,
+            samplePropB: String
+          },
+          ...
+        }
+      </script>
+    ```
+  </details>
+
+  <details>
+    <summary>sample 2 - props validation (as an object)</summary>
+    
+    ```
+      ...
+      <script>
+        export default {
+          props: {
+            samplePropA: {
+              type: String,
+              required: true
+            },
+            samplePropA: {
+              type: String,
+              required: false,
+              default: 'a default value or a function',
+              validator: function(value) {
+                ...
+              }
+            },
+          },
+          ...
+        }
+      </script>
+    ```
+  </details>

@@ -150,7 +150,7 @@
 
 - Directive - `v-bind` - bind data to HTML attribute
 
-  use `v-bind` to reder `data()` property to html element attribute
+  use `v-bind` to render `data()` property to html element attribute
 
   <details>
     <summary>html sample</summary>
@@ -590,5 +590,29 @@
           ...
         }
       </script>
+    ```
+  </details>
+
+- `Props` - Dynamic props
+
+  <details>
+    <summary>App.vue (Parent)</summary>
+
+    ```
+      <template>
+        <sample-component :sample-prop-A="varA" :sample-prop-B="varB"></sample-component>
+      </template>
+      <script>
+        export default {
+          data() {
+            return {
+              varA: 'abc',
+              varB: 'def'
+            }
+          },
+          ...
+        }
+      </script>
+      ...
     ```
   </details>

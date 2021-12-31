@@ -782,3 +782,82 @@
       </style>
     ```
   </details>
+
+- `Slots`
+
+  Similar with props, `slot`s can be used for dynamic HTML to be passed in from one component to another.
+
+  <details>
+    <summary>Parent Component</summary>
+
+    ```
+      <template>
+        <section>
+          <child-comp>
+            <header>
+              <h3>{{ bla }}</h3>
+            </header>
+          </child-comp>
+        </section>
+      </template>
+    ```
+  </details>
+
+  <details>
+    <summary>Child Component</summary>
+
+    ```
+      <template>
+        <div>
+          <slot>
+          </slot>
+        </div>
+      </template>
+    ```
+  </details>
+
+- `Named Slots` - when have multiple slots, see [here](https://v3.vuejs.org/guide/component-slots.html#named-slots) for details.
+
+  <details>
+    <summary>Parent Component</summary>
+
+    ```
+      <base-layout>
+        <template v-slot:header>
+        <!-- <template #header> shorthand for v-slot -->
+          <h1>Here might be a page title</h1>
+        </template>
+
+        <template v-slot:default>
+          <p>A paragraph for the main content.</p>
+          <p>And another one.</p>
+        </template>
+
+        <template v-slot:footer>
+          <p>Here's some contact info</p>
+        </template>
+      </base-layout>
+    ```
+  </details>
+
+  <details>
+    <summary>Child Component</summary>
+
+    ```
+      <div class="container">
+        <header>
+          <slot name="header"></slot>
+        </header>
+        <main>
+          <slot></slot> // default slot
+        </main>
+        <footer>
+          <slot name="footer"></slot>
+        </footer>
+      </div>
+    ```
+  </details>
+
+- `Default Slots (Fallback Content)` - default content in a slot, to be rendered when no content is provided. See [here](https://v3.vuejs.org/guide/component-slots.html#fallback-content) for more info.
+
+- `Scoped Slots` - more info [here](https://v3.vuejs.org/guide/component-slots.html#scoped-slots)

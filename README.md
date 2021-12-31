@@ -742,3 +742,29 @@
       ...
     ```
   </details>
+
+- Global and Local components
+
+  Components using `app.component` are globally registered for the application, they can be used in the template of any component instance within this application
+
+  Local component using `components` option
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        ...
+      </template>
+      <script>
+        import ComponentA from './ComponentA.vue'
+        export default {
+          components: {
+            ComponentA
+          }
+          ...
+        }
+      </script>
+      ...
+    ```
+  </details>

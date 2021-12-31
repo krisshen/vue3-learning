@@ -745,9 +745,9 @@
 
 - Global and Local components
 
-  Components using `app.component` are globally registered for the application, they can be used in the template of any component instance within this application
+  Components using `app.component` are globally registered for the application, they can be used in the template of any component instance within this application.
 
-  Local component using `components` option
+  Local component using `components` option.
 
   <details>
     <summary>Sample Component</summary>
@@ -766,5 +766,19 @@
         }
       </script>
       ...
+    ```
+  </details>
+
+- Scoped styles
+
+  When a `<style>` tag has the scoped attribute, its CSS will apply to elements of the current component only.
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <style scoped>
+        ...
+      </style>
     ```
   </details>

@@ -861,3 +861,33 @@
 - `Default Slots (Fallback Content)` - default content in a slot, to be rendered when no content is provided. See [here](https://v3.vuejs.org/guide/component-slots.html#fallback-content) for more info.
 
 - `Scoped Slots` - more info [here](https://v3.vuejs.org/guide/component-slots.html#scoped-slots)
+
+- Dynamic Components - dynamically switch between components
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        <div>
+          <button @click="setSelectedComponent('cmp-a')"></button>
+          <button @click="setSelectedComponent('cmp-b')"></button>
+          <component :is="selectedComponent"></component>
+        </div>
+      </template>
+      <script>
+        export default {
+          data() {
+            return {
+              selectedComponent: '',
+            };
+          },
+          methods: {
+            setSelectedComponent(cmp) {
+              this.selectedComponent = cmp;
+            }
+          }
+        };
+      </script>
+    ```
+  </details>

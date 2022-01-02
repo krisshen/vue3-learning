@@ -1022,6 +1022,7 @@
 - `Router` - Programmatic navigation
 
   After `app.use(router)`, use `this.$router` to control route behaviours.
+  Can also use `props: true` in router setup.
 
   <details>
     <summary>Sample Component</summary>
@@ -1039,5 +1040,28 @@
     ```
   </details>
 
+- `Router` - Nested routes
+  
+  Use `children` in `routes` config, more info [here](https://next.router.vuejs.org/guide/essentials/nested-routes.html#nested-routes)
 
+- `Router` - Multiple routes with named router views
 
+  Use `components` in `routes` config, more info [here](https://next.router.vuejs.org/guide/essentials/named-views.html)
+
+- `Router` - Controller scrolling behaviour
+
+  Use `scrollBehavior` function in `routes` config, more info [here](https://next.router.vuejs.org/guide/advanced/scroll-behavior.html#scroll-behavior)
+
+- `Router` - Navigation guards
+
+  more info [here](https://next.router.vuejs.org/guide/advanced/navigation-guards.html)
+
+  Global beforeEach - Use `router.beforeEach` function to handle each route navigation.
+
+  Then route config level - Use `beforeEnter` in route definition.
+
+  Then component level - Use `beforeRouteEnter` in component.
+
+  Then Global afterEach - `router.afterEach`.
+
+  `beforeRouteLeave` before leaving the route.

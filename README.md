@@ -976,6 +976,49 @@
 
 - `Router` - more info [here](https://next.router.vuejs.org/guide/)
 
+  Router setup:
+  <details>
+    <summary>Sample main.js</summary>
+
+    ```
+      import {createRouter, creatWebHistory} from 'vue-router';
+      import TeamsLlist from '...'; // import components to be routed
+      import TeamMembers from '...';
+
+      const router = createRouter({
+        history: creatWebHistory(), // use web browsers build-in web history mechanism
+        routes: [
+          {path: '/', redirect: '/teams'},
+          {path: '/teams', component: TeamsLlist},
+          {path: '/teams/:teamId', component: TeamMembers, props: true}, // use ':teamId' as a prop in component
+          {path: '/:notFound(.*)', component: NotFound} // use regx to catch all other udefined routes
+        ],
+        linkActiveClass: 'active' // rename router class name
+      });
+      ...
+      app.use(router);
+    ```
+  </details>
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        <p>
+          <!-- use the router-link component for navigation. -->
+          <!-- specify the link by passing the `to` prop. -->
+          <!-- `<router-link>` will render an `<a>` tag with the correct `href` attribute -->
+          <router-link to="/teams">Go to Teams</router-link>
+          <router-link :to="'/teams/' + id">Go to One Team Member</router-link>
+        </p>
+        <!-- route outlet -->
+        <!-- component matched by the route will render here -->
+        <router-view></router-view>
+      </template>
+    ```
+  </details>
+
 - `Router` - Programmatic navigation
 
   After `app.use(router)`, use `this.$router` to control route behaviours.
@@ -995,3 +1038,6 @@
       </script>
     ```
   </details>
+
+
+

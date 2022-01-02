@@ -862,7 +862,7 @@
 
 - `Scoped Slots` - more info [here](https://v3.vuejs.org/guide/component-slots.html#scoped-slots)
 
-- Dynamic Components - dynamically switch between components
+- `Dynamic Components` - dynamically switch between components
 
   <details>
     <summary>Sample Component</summary>
@@ -889,5 +889,23 @@
           }
         };
       </script>
+    ```
+  </details>
+
+- `Dynamic Components` - keep alive
+
+  Use `<keep-alive>` to cache dynamic component instances. e.g. input text of a dynamic component won't be lost if swithing to other components and back.
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        <div>
+          <keep-alive>
+            <component :is="selectedComponent"></component>
+          </keep-alive>
+        </div>
+      </template>
     ```
   </details>

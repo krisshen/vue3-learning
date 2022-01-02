@@ -973,3 +973,25 @@
       </script>
     ```
   </details>
+
+- `Router` - more info [here](https://next.router.vuejs.org/guide/)
+
+- `Router` - Programmatic navigation
+
+  After `app.use(router)`, use `this.$router` to control route behaviours.
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <script>
+        export default {
+          methods: {
+            navigate() {
+              this.$router.push('/someUrl')
+            }
+          }
+        }
+      </script>
+    ```
+  </details>

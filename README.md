@@ -909,3 +909,23 @@
       </template>
     ```
   </details>
+
+- `Teleport` Component
+
+  Below `error-alert` component will be teleported `to` `body` element.
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        <div>
+          <teleport to="body">
+            <error-alert v-if="isError">
+              ...
+            </error-alert>
+          </teleport>
+        </div>
+      </template>
+    ```
+  </details>

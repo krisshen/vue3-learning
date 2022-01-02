@@ -929,3 +929,47 @@
       </template>
     ```
   </details>
+
+- `v-model` on custom components
+
+  When used on custom components, `v-model` prop and event default names are changed, they are `:model-value`(modelValue) prop and `@update:modelValue` event.
+
+  <details>
+    <summary>Form Component</summary>
+
+    ```
+      <template>
+        <form @submit.prevent="submit">
+          <div>
+            <custom-comp v-model="var"></custom-comp>
+          </div>
+          <button>Submit</button>
+        </form>
+      </template>
+    ```
+  </details>
+
+  <details>
+    <summary>Custom Component</summary>
+
+    ```
+      <template>
+        <ul>
+          <li :class="{active: modelValue === 'option1'}">
+            <button type="button" @click="active('option1')">Option 1</button>
+          </li>
+        </ul>
+      </template>
+      <script>
+        export default {
+          props: ['modelValue'],
+          emits: ['update:modelValue'],
+          methods: {
+            active(option) {
+              this.$emit('update:modelValue', option)
+            }
+          }
+        }
+      </script>
+    ```
+  </details>

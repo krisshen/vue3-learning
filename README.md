@@ -1100,3 +1100,79 @@
     ```
   </details>
   
+- `Vuex` - `Mutations` and `Getters`
+
+  <details>
+    <summary>Sample main.js</summary>
+
+    ```
+      import {createStore} from 'vuex';
+
+      const store = createStore({
+        state() {
+          return {
+            counter: 0
+          };
+        },
+        mutations: {
+          increment(state) {
+            state.counter += 1;
+          },
+          increase(state, payload) {
+            state.counter += payload.value;
+          }
+        },
+        getters: {
+          finalCounter(state) {
+            return state.counter * 2;
+          },
+          normalizedCounter(state, getters) {
+            let finalCounter = getters.finalCounter;
+            if (finalCounter < 0) {
+              return 0;
+            }
+            return finalCounter;
+          }
+        }
+      });
+      
+      ...
+      app.use(store);
+    ```
+  </details>
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        <p>
+          <button @click="addOne"> Add 1</button>
+          <button @click="addTwo"> Add 2</button>
+          <h3>{{ counter }}</h3>
+          <h3>{{ normalizedCounter }}</h3>
+        </p>
+      </template>
+      <script>
+      export default {
+        methods: {
+          addOne() {
+            this.$store.commit('increment');
+          },
+          addTwo() {
+            this.$store.commit('increase', {value: 2});
+          }
+        },
+        computed: {
+          counter() {
+            return this.$store.getters.finalCounter;
+          },
+          normalizedCounter() {
+            return this.$store.getters.normalizedCounter;
+          }
+        }
+      }
+      </script>
+    ```
+  </details>
+

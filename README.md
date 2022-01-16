@@ -1065,3 +1065,38 @@
   Then Global afterEach - `router.afterEach`.
 
   `beforeRouteLeave` - before leaving the route.
+
+- `Vuex` - more info [here](https://v3.vuejs.org/guide/migration/introduction.html#vuex)
+
+  Vuex setup:
+  <details>
+    <summary>Sample main.js</summary>
+
+    ```
+      import {createStore} from 'vuex';
+
+      const store = createStore({
+        state() {
+          return {
+            counter: 0
+          };
+        }
+      });
+      
+      ...
+      app.use(store);
+    ```
+  </details>
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        <p>
+          <h3>{{ $store.state.counter }}</h3>
+        </p>
+      </template>
+    ```
+  </details>
+  

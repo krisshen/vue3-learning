@@ -1064,4 +1064,4 @@
 
   Then Global afterEach - `router.afterEach`.
 
-  `beforeRouteLeave` before leaving the route.
+  `beforeRouteLeave` - before leaving the route.

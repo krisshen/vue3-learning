@@ -1310,3 +1310,43 @@
     ```
   </details>
 
+- `Vuex` - add modules to `Store`
+
+  <details>
+    <summary>Sample main.js</summary>
+
+    ```
+      import {createStore} from 'vuex';
+
+      const counterModule = {
+        state() {
+          return {
+            counter: 0
+          };
+        },
+        mutations: {...},
+        actuions: {...},
+        getters: {...}
+      }
+      const store = createStore({
+        modules: {
+          numbers: counterModule
+        },
+        state() {
+          return {
+            isLoggeedIn: false
+          };
+        },
+        mutations: {
+          setAuth(state, payload) {...}
+        },
+        actions: {
+          login(context) {...},
+          logout(context) {...},
+        }
+      });
+      
+      ...
+      app.use(store);
+    ```
+  </details>

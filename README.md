@@ -1102,6 +1102,9 @@
   
 - `Vuex` - `Mutations` and `Getters`
 
+  Use `this.$store.commit` to run `Mutations`
+  Use `this.$store.getters` for `Getters`
+
   <details>
     <summary>Sample main.js</summary>
 
@@ -1176,3 +1179,79 @@
     ```
   </details>
 
+- `Vuex` - Async code with `Actions`
+
+  `Mutations` is synchronous, `Actions` is asynchronous
+
+  Use `this.$store.dispatch` to run `Actions`
+
+  <details>
+    <summary>Sample main.js</summary>
+
+    ```
+      import {createStore} from 'vuex';
+
+      const store = createStore({
+        state() {
+          return {
+            counter: 0
+          };
+        },
+        mutations: {
+          increment(state) {
+            state.counter += 1;
+          },
+          increase(state, payload) {
+            state.counter += payload.value;
+          }
+        },
+        actions: {
+          increase(context, payload) {
+            // can run some async code like http requests
+            context.commit(increase, payload);
+          }
+        }
+      });
+      ...
+      app.use(store);
+    ```
+  </details>
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        <p>
+          <button @click="addOne"> Add 1</button>
+          <button @click="addTwo"> Add 2</button>
+          <h3>{{ counter }}</h3>
+          <h3>{{ normalizedCounter }}</h3>
+        </p>
+      </template>
+      <script>
+      export default {
+        methods: {
+          addOne() {
+            //this.$store.commit('increment');
+            this.$store.dispatch({
+              type: 'increase',
+              value: 10
+            });
+          },
+          addTwo() {
+            this.$store.commit('increase', {value: 2});
+          }
+        },
+        computed: {
+          counter() {
+            return this.$store.getters.finalCounter;
+          },
+          normalizedCounter() {
+            return this.$store.getters.normalizedCounter;
+          }
+        }
+      }
+      </script>
+    ```
+  </details>

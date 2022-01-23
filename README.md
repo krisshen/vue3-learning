@@ -1298,12 +1298,13 @@
 
       export default {
         methods: {
-          ...mapActions([
+          ...mapActions({
             inc: 'increase', 
-            incre: 'increment']);
+            incre: 'increment'
+          })
         },
         computed: {
-          ...mapGetters([finalC: 'finalCounter'])
+          ...mapGetters({finalC: 'finalCounter'})
         }
       }
       </script>
@@ -1325,7 +1326,7 @@
           };
         },
         mutations: {...},
-        actuions: {...},
+        actions: {...},
         getters: {...}
       }
       const store = createStore({
@@ -1348,5 +1349,70 @@
       
       ...
       app.use(store);
+    ```
+  </details>
+
+- `Vuex` - Use namespace in modules, more info [here](https://vuex.vuejs.org/guide/modules.html#namespacing)
+
+  Use `namespaced: true` in Vuex module.
+
+  <details>
+    <summary>Sample main.js</summary>
+
+    ```
+      import {createStore} from 'vuex';
+
+      const counterModule = {
+        namespaced: true,
+        state() {
+          return {
+            counter: 0
+          };
+        },
+        mutations: {...},
+        actions: {...},
+        getters: {...}
+      }
+      const store = createStore({
+        modules: {
+          numbers: counterModule
+        },
+        state() {...},
+        mutations: {...},
+        actions: {...}
+      });
+      
+      ...
+      app.use(store);
+    ```
+  </details>
+
+  <details>
+    <summary>Sample Component</summary>
+
+    ```
+      <template>
+        <h2> {{ finalC }} </h2>
+        <button @click="inc({value: 10})">Add number</button>
+        <button @click="incre">Add another number</button>
+      </template>
+      <script>
+      import { mapGetters } from 'vuex';
+
+      export default {
+        methods: {
+          ...mapActions('numbers', {
+            inc: 'increase', 
+            incre: 'increment'})
+        },
+        computed: {
+          ...mapGetters('numbers', [finalC: 'finalCounter'])
+          // without mapGetter
+          // counter() {
+          //  return this.$store.getters['numbers/finalCOunter'];
+          //}
+        }
+      }
+      </script>
     ```
   </details>

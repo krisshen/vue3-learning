@@ -1255,3 +1255,58 @@
       </script>
     ```
   </details>
+
+- `Vuex` - `mapGetters`, `mapActions`
+
+  Getters and actions as list items.
+  <details>
+    <summary>Sample Component 1</summary>
+
+    ```
+      <template>
+        <h2> {{ finalCounter }} </h2>
+        <button @click="increase({value: 10})">Add number</button>
+        <button @click="increment">Add another number</button>
+      </template>
+      <script>
+      import { mapGetters } from 'vuex';
+
+      export default {
+        methods: {
+          ...mapActions(['increase', 'increment']);
+        },
+        computed: {
+          ...mapGetters(['finalCounter'])
+        }
+      }
+      </script>
+    ```
+  </details>
+
+  Use property name to map list items.
+  <details>
+    <summary>Sample Component 2</summary>
+
+    ```
+      <template>
+        <h2> {{ finalC }} </h2>
+        <button @click="inc({value: 10})">Add number</button>
+        <button @click="incre">Add another number</button>
+      </template>
+      <script>
+      import { mapGetters } from 'vuex';
+
+      export default {
+        methods: {
+          ...mapActions([
+            inc: 'increase', 
+            incre: 'increment']);
+        },
+        computed: {
+          ...mapGetters([finalC: 'finalCounter'])
+        }
+      }
+      </script>
+    ```
+  </details>
+
